@@ -20,10 +20,11 @@ requirements:
     - scikit-build
     - cmake >=3.18
     - ninja
-    - numpy
+    - numpy >=1.22
 
   run:
     - python
+    - numpy >=1.22
 
 
 test:

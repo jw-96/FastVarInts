@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: [ubuntu-latest]  # TODO: windows after 2016 doesn't config correctly , macos-latest
-        python-version: ["3.7", "3.9"]
+        python-version: ["3.9"]
 
     runs-on: ${{ matrix.platform }}
 
