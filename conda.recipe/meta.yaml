@@ -20,6 +20,7 @@ requirements:
     - scikit-build
     - cmake >=3.18
     - ninja
+    - numpy
 
   run:
     - python
