@@ -15,13 +15,13 @@ from setuptools import find_packages
 setup(
     name="fastvarints",
     version="0.0.1",
-    description="a minimal example package (with pybind11)",
-    author="Henry Schreiner",
+    description="Implements the elais gamma encoding for numpy arrays",
+    author="Jeffrey Wigger",
     license="MIT",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     cmake_install_dir="src/fastvarints",
     include_package_data=True,
     extras_require={"test": ["pytest", "numpy"]},
-    python_requires=">=3.6",
+    python_requires=">=3.9",
 )
