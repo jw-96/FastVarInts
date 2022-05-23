@@ -2,6 +2,7 @@
 requires = [
     "setuptools>=42",
     "cmake>=3.22",
+    "numpy",
     "scikit-build>=0.14.1",
 ]
 
