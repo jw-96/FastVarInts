@@ -15,10 +15,12 @@ if(SKBUILD)
 endif()
 
 # Now we can find pybind11
-find_package(pybind11 CONFIG REQUIRED)
+#find_package(pybind11 CONFIG REQUIRED)
+add_subdirectory("extern/pybind11")
 
 pybind11_add_module(_core MODULE src/main.cpp)
 
 target_compile_definitions(_core PRIVATE VERSION_INFO=${PROJECT_VERSION})
 
+target_link_libraries(_core PUBLIC pybind11)
 install(TARGETS _core DESTINATION .)
