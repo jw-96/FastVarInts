@@ -23,7 +23,10 @@ jobs:
         shell: "bash -l {0}"
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository and submoduels
+        uses: actions/checkout@v2
+        with:
+            submodules: recursive
 
       - name: Get conda
         uses: conda-incubator/setup-miniconda@v2.1.1
@@ -38,7 +41,7 @@ jobs:
         run: conda build conda.recipe
 
       - name: Install
-        run: conda install -c ${CONDA_PREFIX}/conda-bld/ scikit_build_example
+        run: conda install -c ${CONDA_PREFIX}/conda-bld/ fastVarInts
 
       - name: Test
         run: pytest tests

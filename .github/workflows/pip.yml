@@ -18,7 +18,10 @@ jobs:
         python-version: ["3.6", "3.10", "pypy-3.8"]
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
 
     - uses: actions/setup-python@v3
       with:
