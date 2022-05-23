@@ -100,7 +100,7 @@ py::array_t<u_int8_t> compress(py::array_t<u_int32_t> array){
   bytes += 8;
 
   auto capsule = py::capsule(compressed, [](void *v) {
-    std::cerr << "freeing memory @ " << v << "\n";
+    //std::cerr << "freeing memory @ " << v << "\n";
     delete reinterpret_cast<std::vector<u_int8_t>*>(v);
   });
   return py::array(compressed->size(), compressed->data(), capsule);
@@ -189,7 +189,7 @@ py::array_t<u_int32_t> decompress(py::array_t<u_int8_t> array){
   }
 
   auto capsule = py::capsule(uncomp, [](void *v) {
-    std::cerr << "freeing memory @ " << v << "\n";
+    //std::cerr << "freeing memory @ " << v << "\n";
     delete reinterpret_cast<std::vector<u_int32_t>*>(v);
   });
   return py::array(uncomp->size(), uncomp->data(), capsule);
