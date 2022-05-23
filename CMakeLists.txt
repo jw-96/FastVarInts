@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15...3.22)
 
-project(scikit_build_example VERSION "0.0.1")
+project(fastVarInts VERSION "0.0.1")
 
 if(SKBUILD)
   # Scikit-Build does not add your site-packages to the search path
@@ -32,5 +32,5 @@ add_custom_command(
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy
         $<TARGET_FILE:_core>
-        ${CMAKE_CURRENT_LIST_DIR}/src/scikit_build_example/$<TARGET_FILE_NAME:_core>
+        ${CMAKE_CURRENT_LIST_DIR}/src/fastVarInts/$<TARGET_FILE_NAME:_core>
 )

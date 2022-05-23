@@ -1,5 +1,5 @@
 package:
-  name: scikit_build_example
+  name: fastVarInts
   version: 0.0.1
 
 source:
@@ -27,9 +27,11 @@ requirements:
 
 test:
   imports:
-    - scikit_build_example
+    - fastVarInts
+    - numpy
   requires:
     - pytest
+    - numpy
   source_files:
     - tests
   commands:
