@@ -1,4 +1,4 @@
-import fastVarInts as fvi
+import fastvarints as fvi
 import numpy as np
 
 def test_version():

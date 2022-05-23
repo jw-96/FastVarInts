@@ -201,7 +201,7 @@ PYBIND11_MODULE(_core, m) {
         Fast Variable Length Encodings For Python
         -----------------------
 
-        .. currentmodule:: fastVarInts
+        .. currentmodule:: fastvarints
 
         .. autosummary::
            :toctree: _generate

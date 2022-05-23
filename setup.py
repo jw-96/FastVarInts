@@ -13,15 +13,15 @@ except ImportError:
 from setuptools import find_packages
 
 setup(
-    name="fastVarInts",
+    name="fastvarints",
     version="0.0.1",
     description="a minimal example package (with pybind11)",
     author="Henry Schreiner",
     license="MIT",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    cmake_install_dir="src/fastVarInts",
+    cmake_install_dir="src/fastvarints",
     include_package_data=True,
-    extras_require={"test": ["pytest"]},
+    extras_require={"test": ["pytest", "numpy"]},
     python_requires=">=3.6",
 )
