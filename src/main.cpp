@@ -1,7 +1,6 @@
 #include "pybind11/pybind11.h"
 #include "pybind11/numpy.h"
-//#include "./extern/pybind11/include/pybind11/pybind11.h"
-// #include "extern/pybind11/include/"
+
 //#include <pybind11/pybind11.h>
 //#include <pybind11/numpy.h>
 #include <math.h>
@@ -220,28 +219,27 @@ py::array_t<u_int32_t> decompress(py::array_t<u_int8_t> array){
 
 PYBIND11_MODULE(_core, m) {
     m.doc() = R"pbdoc(
-        Pybind11 example plugin
+        Fast Variable Length Encodings For Python
         -----------------------
 
-        .. currentmodule:: scikit_build_example
+        .. currentmodule:: fastVarInts
 
         .. autosummary::
            :toctree: _generate
 
            compress
+           decompress
     )pbdoc";
 
 
     m.def("compress", &compress, R"pbdoc(
-        Add two numbers
+        compresses a numpy array using the elias gamma encoding
 
-        Some other explanation about the add function.
     )pbdoc");
 
     m.def("decompress", &decompress, R"pbdoc(
-        Add two numbers
+        decompresses a numpy byte array with elias gamma encoded numbers
 
-        Some other explanation about the add function.
     )pbdoc");
 
 
