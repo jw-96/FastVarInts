@@ -19,8 +19,18 @@ endif()
 add_subdirectory("extern/pybind11")
 
 pybind11_add_module(_core MODULE src/main.cpp)
-
 target_compile_definitions(_core PRIVATE VERSION_INFO=${PROJECT_VERSION})
 
-target_link_libraries(_core PUBLIC pybind11)
 install(TARGETS _core DESTINATION .)
+
+#target_link_libraries(_core PUBLIC pybind11)
+install(TARGETS _core DESTINATION .)
+
+# this is optional to enable editable mode
+add_custom_command(
+        TARGET _core
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        $<TARGET_FILE:_core>
+        ${CMAKE_CURRENT_LIST_DIR}/src/scikit_build_example/$<TARGET_FILE_NAME:_core>
+)
