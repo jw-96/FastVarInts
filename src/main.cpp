@@ -29,9 +29,6 @@ py::array_t<u_int8_t> compress(py::array_t<u_int32_t> array){
     // only accurate upt to 2^52, use the following for long implementation:
     // https://stackoverflow.com/questions/994593/how-to-do-an-integer-log2-in-c
     int n = (int) log2((double) value); // can be done faster?, Look at highest 1?
-    // log 2 does not work for large numbers > 4294967295, as it yields 32 (4294967296 has log2 of 32)
-    // it does only not work when they are .999999.. close the correct result, then it rounds them up!
-    // switched to double now it works for all 32 bits
     int np1 = n + 1;
     // py::print("logs: ", n, np1, cur, left);
     total_size += n + np1;
@@ -101,24 +98,6 @@ py::array_t<u_int8_t> compress(py::array_t<u_int32_t> array){
   }
   // py::print("total size: ", total_size, "bytes: ", bytes);
   bytes += 8;
-  // Create a Python object that will free the allocated
-  // memory when destroyed:
-
-  /*u_int8_t * fin = new u_int8_t [bytes];
-  std::memcpy(fin, compressed->data(), bytes);
-  delete compressed;
-  py::capsule free_when_done(fin, [](void *f) {
-    u_int8_t *fin = reinterpret_cast<u_int8_t *>(f);
-    std::cerr << "freeing memory @ " << f << "\n";
-    delete[] fin;
-  });
-
-  return py::array_t<u_int8_t>(
-      {bytes},
-      {bytes, 1}, // C-style contiguous strides for double
-      fin, // the data pointer
-      free_when_done); // numpy array references this parent
-  */
 
   auto capsule = py::capsule(compressed, [](void *v) {
     std::cerr << "freeing memory @ " << v << "\n";
