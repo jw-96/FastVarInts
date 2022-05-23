@@ -140,3 +140,7 @@ dmypy.json
 cython_debug/
 
 _skbuild/
+
+.idea/
+
+cmake-build-debug/
